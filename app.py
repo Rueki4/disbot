@@ -1,5 +1,5 @@
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
 from bs4 import BeautifulSoup
 import requests
 
@@ -11,7 +11,7 @@ intents.members = True
 
 bot = commands.Bot(command_prefix="'", intents=intents)
 
-@bot.loop(minutes = 1)
+@tasks.loop(minutes = 1)
 async def enviar_mensaje_periodico():
     canal = bot.get_channel("1385816218707038268")
     if canal:
@@ -50,7 +50,7 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
-enviar_mensaje_periodico.start()
+# enviar_mensaje_periodico.start()
 
 token_a = "MTM4NTc3NTU2MDA2MzQ1MTIyNw."
 token_b = "GzW8GX.6gHVgapzMm8L40X8LQpasXj1wP8iLU7mVRfX50"

@@ -1,0 +1,52 @@
+import discord
+from discord.ext import commands
+from dotenv import load_dotenv
+import os
+from bs4 import BeautifulSoup
+import requests
+
+load_dotenv()
+
+index = -1
+token = os.getenv('token')
+intents = discord.Intents.all()
+intents.messages = True
+intents.members = True
+
+bot = commands.Bot(command_prefix="'", intents=intents)
+
+@bot.command()
+async def info(ctx, nombre : str):
+    await ctx.send(nombre)
+
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return
+    # global index
+    if 'hola' in message.content.lower():
+
+        # url = "https://rule34.xxx/index.php?page=post&s=list&tags=futabu+"
+        # headers = {
+        #     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+        # }
+        # hentai_list = []
+        # resp = requests.get(url, headers=headers)
+        # # resp.raise_for_status()  # lanza error si el status ≠ 200
+        # soup = BeautifulSoup(resp.text, "html.parser")
+
+        # # Ejemplo: títulos y enlaces de resultados
+        # soup_str = str(soup).split("\n")
+
+        # for i in range(len(soup_str)):
+        #     # print(soup_str[i])
+        #     if "thumbnails" in soup_str[i]:
+        #         source = soup_str[i].split('src')[1].split('"')[1]
+        #         hentai_list.append(source)
+        # index += 1
+        await message.channel.send("hola")
+
+    await bot.process_commands(message)
+
+
+bot.run(token)

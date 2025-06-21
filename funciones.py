@@ -31,8 +31,10 @@ def crear_randomizador(tag : str, canal : str, score : int) -> str:
                         if "score" in new_soup_str[j]:
                             if int(new_soup_str[j].split("score:")[1].split(" ")[0]) > score:
                                 code = new_soup_str[j].split("?")[1].split('"')[0]
+                                print( new_soup_str[j].split("score:")[1].split(" ")[0] )
                                 break
                             else:
+                                print( new_soup_str[j].split("score:")[1].split(" ")[0] )
                                 code = new_soup_str[j].split("?")[1].split('"')[0]
                                 print(f"Code fake {code}")
                     url = f"https://rule34.xxx/index.php?page=post&s=view&id={code}"

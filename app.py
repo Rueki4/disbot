@@ -52,6 +52,7 @@ if __name__ == '__main__':
     @bot.command()
     async def randomrule(ctx, tag : str = "", score : int = 0):
         global lista_auto
+        print(tag)
         lista_auto.append(funciones.crear_randomizador(tag, ctx.channel.id, score))
 
     @bot.command()

@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import requests
 import random
 
-def crear_randomizador(tag : str, canal : str) -> str:
+def crear_randomizador(tag : str, canal : str, score : int) -> str:
     def nueva_funcion():
         try:
             url = "https://rule34.xxx/index.php?page=post&s=list&tags=" + tag + "+&pid=0"
@@ -29,7 +29,7 @@ def crear_randomizador(tag : str, canal : str) -> str:
                     new_soup_str = str(soup).split("\n")
                     for j in range(len(new_soup_str)):
                         if "score" in new_soup_str[j]:
-                            if int(new_soup_str[j].split("score:")[1].split(" ")[0]) > 100:
+                            if int(new_soup_str[j].split("score:")[1].split(" ")[0]) > score:
                                 code = new_soup_str[j].split("?")[1].split('"')[0]
                                 break
                     url = f"https://rule34.xxx/index.php?page=post&s=view&id={code}"

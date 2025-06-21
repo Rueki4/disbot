@@ -38,7 +38,7 @@ def crear_randomizador(tag : str, canal : str, score : int) -> str:
 
                     last_soup_str = "https://wimg." + str(soup).split("https://wimg.")[1].split('"')[0]
         except:
-            last_soup_str = "Enjoying the goon sesion?"
+            last_soup_str = ":("
         return last_soup_str, canal
     print("De momento todo bien")
     return nueva_funcion

@@ -40,7 +40,11 @@ if __name__ == '__main__':
     @tasks.loop(minutes = 1)
     async def lista_automatica():
         for i in range(len(lista_auto)):
-            content, canal_id = lista_auto[i]()
+            content = ":("
+            intentos = 0
+            while content == "" and intentos < 3:
+                content, canal_id = lista_auto[i]()
+                intentos += 1
             canal = bot.get_channel(canal_id)
             if canal:
                 await canal.send(content)

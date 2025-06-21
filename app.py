@@ -11,11 +11,17 @@ intents.members = True
 
 bot = commands.Bot(command_prefix="'", intents=intents)
 
+@bot.event
+async def on_ready():
+    print(f"Conectado como {bot.user}")
+    enviar_mensaje_periodico.start()  # Inicia el loop cuando el bot esté listo
+
 @tasks.loop(minutes = 1)
 async def enviar_mensaje_periodico():
-    canal = bot.get_channel("1385816218707038268")
+    canal = bot.get_channel(1385816218707038268)
+    print(canal)
     if canal:
-        await canal.send("hola")
+        await canal.send("holaaaaa")
 
 @bot.command()
 async def info(ctx, nombre : str):
@@ -54,7 +60,6 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
-enviar_mensaje_periodico.start()
 
 token_a = "MTM4NTc3NTU2MDA2MzQ1MTIyNw."
 token_b = "GzW8GX.6gHVgapzMm8L40X8LQpasXj1wP8iLU7mVRfX50"

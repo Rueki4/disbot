@@ -1,11 +1,8 @@
 import discord
 from discord.ext import commands
-from dotenv import load_dotenv
-import os
 from bs4 import BeautifulSoup
 import requests
 
-load_dotenv()
 
 index = -1
 intents = discord.Intents.all()

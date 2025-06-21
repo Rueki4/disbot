@@ -7,6 +7,7 @@ import random
 def crear_randomizador(tag : str, canal : str, score : int) -> str:
     def nueva_funcion():
         try:
+            print("ABCS")
             url = "https://rule34.xxx/index.php?page=post&s=list&tags=" + tag + "+&pid=0"
             headers = {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"

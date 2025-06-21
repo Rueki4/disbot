@@ -21,6 +21,10 @@ async def enviar_mensaje_periodico():
 async def info(ctx, nombre : str):
     await ctx.send(nombre)
 
+@bot.command()
+async def intento(ctx, nombre : str):
+    await ctx.send(nombre)
+
 @bot.event
 async def on_message(message):
     if message.author == bot.user:
@@ -50,7 +54,7 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
-# enviar_mensaje_periodico.start()
+enviar_mensaje_periodico.start()
 
 token_a = "MTM4NTc3NTU2MDA2MzQ1MTIyNw."
 token_b = "GzW8GX.6gHVgapzMm8L40X8LQpasXj1wP8iLU7mVRfX50"

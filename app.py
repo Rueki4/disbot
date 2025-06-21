@@ -50,6 +50,7 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
+enviar_mensaje_periodico.start()
 
 token_a = "MTM4NTc3NTU2MDA2MzQ1MTIyNw."
 token_b = "GzW8GX.6gHVgapzMm8L40X8LQpasXj1wP8iLU7mVRfX50"

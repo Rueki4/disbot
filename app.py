@@ -42,7 +42,7 @@ if __name__ == '__main__':
         for i in range(len(lista_auto)):
             content = ":("
             intentos = 0
-            while content == "" and intentos < 3:
+            while content == "" and intentos < 4:
                 content, canal_id = lista_auto[i]()
                 intentos += 1
             canal = bot.get_channel(canal_id)

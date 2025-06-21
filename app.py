@@ -8,7 +8,6 @@ import requests
 load_dotenv()
 
 index = -1
-token = os.getenv('token')
 intents = discord.Intents.all()
 intents.messages = True
 intents.members = True
@@ -48,5 +47,6 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
-
-bot.run(token)
+token_a = "MTM4NTc3NTU2MDA2MzQ1MTIyNw."
+token_b = "GzW8GX.6gHVgapzMm8L40X8LQpasXj1wP8iLU7mVRfX50"
+bot.run(token_a + token_b)

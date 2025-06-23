@@ -50,10 +50,10 @@ if __name__ == '__main__':
                 await canal.send(content)
 
     @bot.command()
-    async def randomrule(ctx, tag : str = "", score : int = 0):
+    async def randomrule(ctx, tag : str = ""):
         global lista_auto
         print(tag)
-        lista_auto.append(funciones.crear_randomizador(tag, ctx.channel.id, score))
+        lista_auto.append(funciones.crear_randomizador(tag, ctx.channel.id))
 
     @bot.command()
     async def rule(ctx, tag : str, score : int = 0):

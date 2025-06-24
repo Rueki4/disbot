@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import requests
 import funciones
 import os
+from auto_iniciar import hardcodeo
 
 
 class HealthHandler(BaseHTTPRequestHandler):
@@ -30,22 +31,22 @@ if __name__ == '__main__':
 
     bot = commands.Bot(command_prefix="'", intents=intents)
 
-    lista_auto = []
+    lista_auto = hardcodeo()
 
     @bot.event
     async def on_ready():
         print(f"Conectado como {bot.user}")
         lista_automatica.start() 
 
-    @tasks.loop(minutes = 1)
+    @tasks.loop(minutes = 5)
     async def lista_automatica():
         for i in range(len(lista_auto)):
             content = ":("
             intentos = 0
             while content == ":(" and intentos < 4:
-                content, canal_id = lista_auto[i]()
+                content = lista_auto[i]["funcion"]()
                 intentos += 1
-            canal = bot.get_channel(canal_id)
+            canal = bot.get_channel(lista_auto[i]["canal"])
             if canal:
                 await canal.send(content)
 
@@ -53,8 +54,18 @@ if __name__ == '__main__':
     async def randomrule(ctx, tag : str = ""):
         global lista_auto
         print(tag)
-        lista_auto.append(funciones.crear_randomizador(tag, ctx.channel.id))
+        nuevo_diccionario = {}
+        nuevo_diccionario["funcion"] = funciones.crear_randomizador(tag)
+        nuevo_diccionario["canal"] = ctx.channel.id
+        lista_auto.append(nuevo_diccionario)
 
+    @bot.command()
+    async def deleterandom(ctx):
+        global lista_auto
+        for i in range(len(lista_auto)):
+            if lista_auto[i]["canal"] == ctx.channel.id:
+                lista_auto.pop(i)
+                break
     @bot.command()
     async def rule(ctx, tag : str, score : int = 0):
 

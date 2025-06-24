@@ -38,7 +38,7 @@ if __name__ == '__main__':
         print(f"Conectado como {bot.user}")
         lista_automatica.start() 
 
-    @tasks.loop(minutes = 5)
+    @tasks.loop(minutes = 30)
     async def lista_automatica():
         for i in range(len(lista_auto)):
             content = ":("
